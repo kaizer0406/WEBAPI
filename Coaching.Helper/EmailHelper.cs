@@ -10,8 +10,8 @@ namespace Coaching.Helper
 {
     public static class EmailHelper
     {
-        private static string Email = "bot.test.dev@gmail.com";
-        private static string Password = "P@ssw0rd.123147";
+        private static string Email = "Karlos280199@gmail.com";
+        private static string Password = "gkyxdyfmgswxchox";
 
         public static void SendMails(IEnumerable<string> toAddresses, string subject, string htmlBody)
         {

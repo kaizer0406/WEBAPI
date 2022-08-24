@@ -63,9 +63,9 @@ namespace Coaching.Helper {
         /// <summary>
         ///   Busca una cadena traducida similar a {
         ///  &quot;type&quot;: &quot;service_account&quot;,
-        ///  &quot;project_id&quot;: &quot;coaching-27078&quot;,
-        ///  &quot;private_key_id&quot;: &quot;15b88f05b615818787b82647239269e18c8d4f4b&quot;,
-        ///  &quot;private_key&quot;: &quot;-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDKId3WLRogxAHO\noZU1Fj3c6sczILqebsKVjgb/MwMXXKeO/cgNOkm3YqWmu8vk/fUu0+W10/EXWBeR\nFGP9epWsBeyae/OXuLN49TZbI9PgdGsCeCea7NPoKWzH3nry2tSXOUTfpQhojRga\n8SJtixOAj9LGCYyA5oBo4hZ0dxK4YI//smDrrRbjq+SdAvG3fWUhFKZb/jE11Kc+\nx3U0Mx1Ah4sVuUdm/WeIH7KqHUFBu++YREgY/1oo1vHCvf5A/ZJ283hcmGtZftTc\nHMuNkX [resto de la cadena truncado]&quot;;.
+        ///  &quot;project_id&quot;: &quot;digital-coach-women&quot;,
+        ///  &quot;private_key_id&quot;: &quot;300407fde3c2d0d800dc04ae2705c4fd130a7476&quot;,
+        ///  &quot;private_key&quot;: &quot;-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDE6XPbN8A89aC/\n5r0wQ2cc8IK5GtRCP4Ib5FMnDs+N/X/lFup5mVf+lJHkQiVKY8uSLRi939hxZu6a\nueWhN0tHAbyM8AnUUR9BA3CCLkd7RNIxXiJ8KPq/KwjHraqizdlTXCrMyZsY627Q\nazcLBEXySoc0Dmn+Uajc07Cm/cYq0VNkuderWuw9GQfBpNUeSS7FXkJLouB/Wm3d\ndlsl15YlU6H266Nf/W6juulwXTSGdMeqdRP72XA6kOO78zU8alHftV3PJ6RoOx0n\nR [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string firebase {
             get {

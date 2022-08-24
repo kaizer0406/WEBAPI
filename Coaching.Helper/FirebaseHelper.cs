@@ -16,7 +16,7 @@ namespace Coaching.Helper
                 {
                     JsonCredentials = Resource.firebase
                 }.Build();
-                _db = FirestoreDb.Create("coaching-27078", client);
+                _db = FirestoreDb.Create("digital-coach-women", client);
             }
         }
 

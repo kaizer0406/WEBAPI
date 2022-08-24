@@ -26,3 +26,17 @@ D:\SCHOOL\UPC-2022-1\TDP\PROYECTO_2_ACTUAL\API\Coaching\Coaching.Data.Core\obj\D
 D:\SCHOOL\UPC-2022-1\TDP\PROYECTO_2_ACTUAL\API\Coaching\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.pdb
 D:\SCHOOL\UPC-2022-1\TDP\PROYECTO_2_ACTUAL\API\Coaching\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.genruntimeconfig.cache
 D:\SCHOOL\UPC-2022-1\TDP\PROYECTO_2_ACTUAL\API\Coaching\Coaching.Data.Core\obj\Debug\net6.0\ref\Coaching.Data.Core.dll
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\bin\Debug\net6.0\Coaching.Data.Core.deps.json
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\bin\Debug\net6.0\Coaching.Data.Core.runtimeconfig.json
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\bin\Debug\net6.0\Coaching.Data.Core.dll
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\bin\Debug\net6.0\Coaching.Data.Core.pdb
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.csproj.AssemblyReference.cache
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.AssemblyInfoInputs.cache
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.AssemblyInfo.cs
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.csproj.CoreCompileInputs.cache
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.dll
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\refint\Coaching.Data.Core.dll
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.pdb
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\Coaching.Data.Core.genruntimeconfig.cache
+D:\Documents\Proyecto_Net\WEBAPI\Coaching.Data.Core\obj\Debug\net6.0\ref\Coaching.Data.Core.dll

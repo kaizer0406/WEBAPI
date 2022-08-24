@@ -10,8 +10,8 @@ namespace Coaching.Helper
 {
     public static class FirebaseFCMHelper
     {
-        private static string serverKey = "AAAAXyKlwr4:APA91bFwJ4hBhE5_i6-jKMq0_UKvfIx8y9vKC_iR2lYjnT0ijUG6VLE1YHGpxOYlrAbD8UEc1n-vMCvMKgobYbgxxwzK8p5eYpYTD6eGMi_IUZVAPoCt6IySSMsfz8ijTsG72RbhVF51";
-        private static string senderId = "408603181758";
+        private static string serverKey = "AAAAwPhxzvs:APA91bH19FvdlULNFEv_2cPPReuCpkELRusQmAXS0ljH8aaWrxgEO51VfSs8tUeZeK9VQ4D2-GYmTYzAIuekpMuQp9NI6YxGAGtNcsVYEMd0BvZsFqMAoMGmnmHIwvQ1odFkzBH1OhnQ";
+        private static string senderId = "828801928955";
         private static string webAddr = "https://fcm.googleapis.com/fcm/send";
 
         public static bool SendPushNotification(string DeviceToken, string title, string msg)
