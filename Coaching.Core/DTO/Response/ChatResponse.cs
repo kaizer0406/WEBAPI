@@ -22,6 +22,8 @@ namespace Coaching.Core.DTO.Response
         public string Message { get; set; }
         [JsonPropertyName("date_message")]
         public string DateMessage { get; set; }
+        [JsonPropertyName("date_seconds_message")]
+        public double DateSecondsMessage { get; set; }
 
         public class Builder
         {
@@ -54,6 +56,8 @@ namespace Coaching.Core.DTO.Response
                 dto.IsTransmitter = trasmitterId == entity.UserId ? true : false;
                 dto.Person = UserResponse.Builder.From(entity.User).Build();
                 dto.Message = entity.Message;
+                TimeSpan timeOfCreatedMessage = entity.CreatedDate.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+                dto.DateSecondsMessage = timeOfCreatedMessage.TotalSeconds;
                 dto.DateMessage = entity.CreatedDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture); ;
                 return new Builder(dto);
             }
