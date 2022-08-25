@@ -57,7 +57,7 @@ namespace Coaching.Core.DTO.Response
                 dto.Person = UserResponse.Builder.From(entity.User).Build();
                 dto.Message = entity.Message;
                 TimeSpan timeOfCreatedMessage = entity.CreatedDate.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
-                dto.DateSecondsMessage = timeOfCreatedMessage.TotalSeconds;
+                dto.DateSecondsMessage = Math.Truncate(timeOfCreatedMessage.TotalSeconds);
                 dto.DateMessage = entity.CreatedDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture); ;
                 return new Builder(dto);
             }
