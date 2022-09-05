@@ -32,6 +32,9 @@ namespace Coaching.API.Controllers
                 .ThenInclude(x => x.Course)
                     .ThenInclude(x => x.CourseLesson)
             .Include(x => x.SpecialityLevel)
+                .ThenInclude(x => x.Course)
+                    .ThenInclude(x => x.Topic)
+            .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.SpecialityLevelCertificate)
             .AsQueryable();
 

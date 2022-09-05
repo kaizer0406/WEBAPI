@@ -33,6 +33,7 @@ namespace Coaching.API.Controllers
         private IQueryable<Speciality> PrepareQuery() => context.Speciality
             .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.Course)
+                    .ThenInclude(x => x.Topic)
             .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.SpecialityLevelCertificate)
          .AsQueryable();

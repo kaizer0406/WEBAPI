@@ -29,6 +29,8 @@ namespace Coaching.Core.DTO.Response
         public int? OrderLesson { get; set; }
         [JsonPropertyName("is_basic")]
         public bool IsBasic { get; set; }
+        [JsonPropertyName("topic")]
+        public string? Topic { get; set; }
         [JsonPropertyName("speciality_level_id")]
         public int SpecialityLevelId { get; set; }
         [JsonPropertyName("speciality")]
@@ -68,6 +70,7 @@ namespace Coaching.Core.DTO.Response
                 dto.Description = entity.Description;
                 dto.Order = entity.Order;
                 dto.Video = entity.Video;
+                dto.Topic = entity.Topic?.Title ?? "";
                 dto.SpecialityLevelId = entity.SpecialityLevelId;
                 dto.IsBasic = entity.SpecialityLevel.IsBasic;
                 if (entity.SpecialityLevel != null) 

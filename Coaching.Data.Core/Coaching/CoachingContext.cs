@@ -29,6 +29,7 @@ namespace Coaching.Data.Core.Coaching
         public virtual DbSet<SpecialityLevel> SpecialityLevel { get; set; } = null!;
         public virtual DbSet<SpecialityLevelCertificate> SpecialityLevelCertificate { get; set; } = null!;
         public virtual DbSet<SuccessStoires> SuccessStoires { get; set; } = null!;
+        public virtual DbSet<Topic> Topic { get; set; } = null!;
         public virtual DbSet<User> User { get; set; } = null!;
         public virtual DbSet<UserCourse> UserCourse { get; set; } = null!;
         public virtual DbSet<UserSpecialityLevel> UserSpecialityLevel { get; set; } = null!;
@@ -186,6 +187,8 @@ namespace Coaching.Data.Core.Coaching
                     .IsUnicode(false)
                     .HasColumnName("title");
 
+                entity.Property(e => e.TopicId).HasColumnName("topic_id");
+
                 entity.Property(e => e.Video)
                     .HasMaxLength(100)
                     .IsUnicode(false)
@@ -196,6 +199,11 @@ namespace Coaching.Data.Core.Coaching
                     .HasForeignKey(d => d.SpecialityLevelId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Course_Speciality_Level");
+
+                entity.HasOne(d => d.Topic)
+                    .WithMany(p => p.Course)
+                    .HasForeignKey(d => d.TopicId)
+                    .HasConstraintName("FK_Course_Topic");
             });
 
             modelBuilder.Entity<CourseLesson>(entity =>
@@ -291,7 +299,7 @@ namespace Coaching.Data.Core.Coaching
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CupImage)
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("cup_image");
 
@@ -377,6 +385,16 @@ namespace Coaching.Data.Core.Coaching
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("profession");
+            });
+
+            modelBuilder.Entity<Topic>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("title");
             });
 
             modelBuilder.Entity<User>(entity =>

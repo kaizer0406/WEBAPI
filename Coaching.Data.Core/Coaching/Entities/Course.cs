@@ -12,13 +12,15 @@ namespace Coaching.Data.Core.Coaching.Entities
         }
 
         public int Id { get; set; }
-        public string Video { get; set; } = null!;
+        public string? Video { get; set; }
         public string Title { get; set; } = null!;
-        public string Description { get; set; } = null!;
+        public string? Description { get; set; }
         public int SpecialityLevelId { get; set; }
         public int Order { get; set; }
+        public int? TopicId { get; set; }
 
         public virtual SpecialityLevel SpecialityLevel { get; set; } = null!;
+        public virtual Topic? Topic { get; set; }
         public virtual ICollection<CourseLesson> CourseLesson { get; set; }
         public virtual ICollection<UserCourse> UserCourse { get; set; }
     }

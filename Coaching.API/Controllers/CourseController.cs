@@ -26,6 +26,8 @@ namespace Coaching.API.Controllers
         
         private IQueryable<UserCourse> PrepareUserCourseQuery() => context.UserCourse
             .Include(x => x.Course)
+                .ThenInclude(x => x.Topic)
+            .Include(x => x.Course)
                 .ThenInclude(x => x.SpecialityLevel)
                     .ThenInclude(x => x.Speciality)
             .Include(x => x.UserSpecialityLevel)
@@ -36,6 +38,7 @@ namespace Coaching.API.Controllers
 
         private IQueryable<Course> PrepareQuery() => context.Course
             .Include(x => x.SpecialityLevel)
+            .Include(x => x.Topic)
             .AsQueryable();
 
         [HttpGet]
