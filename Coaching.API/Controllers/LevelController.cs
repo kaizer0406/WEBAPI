@@ -27,6 +27,8 @@ namespace Coaching.API.Controllers
         private IQueryable<UserSpecialityLevel> PrepareUserQuery() => context.UserSpecialityLevel
             .Include(x => x.UserCourse)
             .Include(x => x.SpecialityLevel)
+                .ThenInclude(x => x.SpecialityLevelTest)
+            .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.Speciality)
             .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.Course)
@@ -42,7 +44,7 @@ namespace Coaching.API.Controllers
            .Include(x => x.User);
 
         private IQueryable<SpecialityLevel> PrepareQuery() => context.SpecialityLevel
-            .Include(x => x.Speciality) 
+            .Include(x => x.Speciality)
             .Include(x => x.Course)
                 .ThenInclude(x => x.CourseLesson)
             .Include(x => x.SpecialityLevelCertificate)
@@ -154,8 +156,9 @@ namespace Coaching.API.Controllers
 
                 var dtos = ServiceHelper.PaginarColeccion(HttpContext.Request, model.Page, model.Limit, levels,
                   pagedEntities => LevelResponse.Builder.From(pagedEntities).BuildAll());
-                foreach (var item in dtos.Data) { 
-                   var history = query.First(x => x.SpecialityLevelId == item.Id);
+                foreach (var item in dtos.Data)
+                {
+                    var history = query.First(x => x.SpecialityLevelId == item.Id);
                     item.IsFinished = history.IsFinish;
                 }
                 return OkResult("", dtos);
@@ -183,9 +186,40 @@ namespace Coaching.API.Controllers
                     return NotFoundResult("Especialidad no encontrado.");
                 var dto = LevelResponse.Builder.From(query).Build();
 
-               
-
                 return OkResult("", dto);
+            }
+            catch (Exception e)
+            {
+                return BadRequestResult(e.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("{id}/test")]
+        [ProducesResponseType(typeof(DefaultResponse<object>), StatusCodes.Status200OK)]
+        public IActionResult TestPerformed(int id, [FromBody] TestRequest model)
+        {
+            try
+            {
+                var userId = GetId(Request);
+                var user = context.User.SingleOrDefault(x => x.Id == userId);
+                if (user is null)
+                    return UnauthorizedResult("unathorized");
+
+                var query = PrepareUserQuery().SingleOrDefault(x => x.UserId == userId && x.SpecialityLevelId == id);
+                if (query is null)
+                    return NotFoundResult("Especialidad no encontrado.");
+
+                var specialityTest = new UserSpecialityLevelTest
+                {
+                    IsApproved = model.IsApproved,
+                    Points = model.Points,
+                    UserSpecialityLevelId = query.Id
+                };
+                context.UserSpecialityLevelTest.Add(specialityTest);
+                context.SaveChanges();
+
+                return OkResult("prueba guardada correctamente", new { });
             }
             catch (Exception e)
             {
@@ -240,12 +274,14 @@ namespace Coaching.API.Controllers
                 var historiesCourse = query.UserCourse;
 
                 var dto = LevelResponse.Builder.From(level).Build();
-                foreach (var item in dto.Courses) { 
+                foreach (var item in dto.Courses)
+                {
                     var historyCourse = historiesCourse.First(x => x.CourseId == item.Id);
                     item.IsFinish = historyCourse.IsFinish;
                     if (item.IsBasic)
                         item.Time = historyCourse.Time;
-                    else {
+                    else
+                    {
                         item.OrderLesson = historyCourse.OrderLesson;
                     }
                 }
@@ -365,7 +401,8 @@ namespace Coaching.API.Controllers
 
                 var userCourses = new List<UserCourse>();
 
-                foreach (var course in level.Course.OrderBy(x => x.Order)) {
+                foreach (var course in level.Course.OrderBy(x => x.Order))
+                {
                     var userCourse = new UserCourse
                     {
                         CourseId = course.Id,
@@ -383,7 +420,7 @@ namespace Coaching.API.Controllers
 
                 transaction.Commit();
 
-                return OkResult("Nivel matriculado correctamente", new {});
+                return OkResult("Nivel matriculado correctamente", new { });
             }
             catch (Exception e)
             {

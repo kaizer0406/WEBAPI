@@ -238,20 +238,20 @@ namespace Coaching.API.Controllers
                 courseHistory.IsFinish = courseHistory.IsFinish == true ? true : model.IsFinish;
                 context.SaveChanges();
 
-                var level = courseHistory.UserSpecialityLevel;
-                var isIncomplete = level.UserCourse.Any(x => x.IsFinish == false);
-                if (isIncomplete == false)
-                {
-                    level.IsFinish = true;
-                    if (level.SpecialityLevel.Level == ConstantHelpers.Level.INTERMEDIO && user.Level == ConstantHelpers.Level.BASICO)
-                    {
-                        user.Level = ConstantHelpers.Level.INTERMEDIO;
-                    }
-                    if (level.SpecialityLevel.Level == ConstantHelpers.Level.AVANZADO && user.Level == ConstantHelpers.Level.INTERMEDIO)
-                    {
-                        user.Level = ConstantHelpers.Level.AVANZADO;
-                    }
-                }
+                var userLevel = courseHistory.UserSpecialityLevel;
+                //var isIncomplete = userLevel.UserCourse.Any(x => x.IsFinish == false);
+                //if (isIncomplete == false)
+                //{
+                //    userLevel.IsFinish = true;
+                //    if (userLevel.SpecialityLevel.Level == ConstantHelpers.Level.INTERMEDIO && user.Level == ConstantHelpers.Level.BASICO)
+                //    {
+                //        user.Level = ConstantHelpers.Level.INTERMEDIO;
+                //    }
+                //    if (userLevel.SpecialityLevel.Level == ConstantHelpers.Level.AVANZADO && user.Level == ConstantHelpers.Level.INTERMEDIO)
+                //    {
+                //        user.Level = ConstantHelpers.Level.AVANZADO;
+                //    }
+                //}
                 context.SaveChanges();
                 transaction.Commit();
 

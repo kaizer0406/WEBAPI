@@ -28,11 +28,14 @@ namespace Coaching.Data.Core.Coaching
         public virtual DbSet<Speciality> Speciality { get; set; } = null!;
         public virtual DbSet<SpecialityLevel> SpecialityLevel { get; set; } = null!;
         public virtual DbSet<SpecialityLevelCertificate> SpecialityLevelCertificate { get; set; } = null!;
+        public virtual DbSet<SpecialityLevelTest> SpecialityLevelTest { get; set; } = null!;
+        public virtual DbSet<SpecialityLevelTestOption> SpecialityLevelTestOption { get; set; } = null!;
         public virtual DbSet<SuccessStoires> SuccessStoires { get; set; } = null!;
         public virtual DbSet<Topic> Topic { get; set; } = null!;
         public virtual DbSet<User> User { get; set; } = null!;
         public virtual DbSet<UserCourse> UserCourse { get; set; } = null!;
         public virtual DbSet<UserSpecialityLevel> UserSpecialityLevel { get; set; } = null!;
+        public virtual DbSet<UserSpecialityLevelTest> UserSpecialityLevelTest { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -358,6 +361,53 @@ namespace Coaching.Data.Core.Coaching
                     .HasConstraintName("FK_Speciality_Level_Certificate_Speciality_Level");
             });
 
+            modelBuilder.Entity<SpecialityLevelTest>(entity =>
+            {
+                entity.ToTable("Speciality_Level_Test");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Answer)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("answer");
+
+                entity.Property(e => e.Order).HasColumnName("order");
+
+                entity.Property(e => e.Question)
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("question");
+
+                entity.Property(e => e.SpecialityLevelId).HasColumnName("speciality_level_id");
+
+                entity.HasOne(d => d.SpecialityLevel)
+                    .WithMany(p => p.SpecialityLevelTest)
+                    .HasForeignKey(d => d.SpecialityLevelId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Speciality_Level_Test_Speciality_Level");
+            });
+
+            modelBuilder.Entity<SpecialityLevelTestOption>(entity =>
+            {
+                entity.ToTable("Speciality_Level_Test_Option");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Option)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("option");
+
+                entity.Property(e => e.SpecialityLevelTestId).HasColumnName("speciality_level_test_id");
+
+                entity.HasOne(d => d.SpecialityLevelTest)
+                    .WithMany(p => p.SpecialityLevelTestOption)
+                    .HasForeignKey(d => d.SpecialityLevelTestId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Speciality_Level_Test_Option_Speciality_Level_Test");
+            });
+
             modelBuilder.Entity<SuccessStoires>(entity =>
             {
                 entity.ToTable("Success_Stoires");
@@ -515,6 +565,27 @@ namespace Coaching.Data.Core.Coaching
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_User_Speciality_Level_User");
+            });
+
+            modelBuilder.Entity<UserSpecialityLevelTest>(entity =>
+            {
+                entity.ToTable("User_Speciality_Level_Test");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.IsApproved).HasColumnName("is_approved");
+
+                entity.Property(e => e.Points)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnName("points");
+
+                entity.Property(e => e.UserSpecialityLevelId).HasColumnName("user_speciality_level_id");
+
+                entity.HasOne(d => d.UserSpecialityLevel)
+                    .WithMany(p => p.UserSpecialityLevelTest)
+                    .HasForeignKey(d => d.UserSpecialityLevelId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_User_Speciality_Level_Test_User_Speciality_Level");
             });
 
             OnModelCreatingPartial(modelBuilder);

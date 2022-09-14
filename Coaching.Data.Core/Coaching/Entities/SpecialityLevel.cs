@@ -9,6 +9,7 @@ namespace Coaching.Data.Core.Coaching.Entities
         {
             Course = new HashSet<Course>();
             SpecialityLevelCertificate = new HashSet<SpecialityLevelCertificate>();
+            SpecialityLevelTest = new HashSet<SpecialityLevelTest>();
             UserSpecialityLevel = new HashSet<UserSpecialityLevel>();
         }
 
@@ -23,6 +24,7 @@ namespace Coaching.Data.Core.Coaching.Entities
         public virtual Speciality Speciality { get; set; } = null!;
         public virtual ICollection<Course> Course { get; set; }
         public virtual ICollection<SpecialityLevelCertificate> SpecialityLevelCertificate { get; set; }
+        public virtual ICollection<SpecialityLevelTest> SpecialityLevelTest { get; set; }
         public virtual ICollection<UserSpecialityLevel> UserSpecialityLevel { get; set; }
     }
 }
