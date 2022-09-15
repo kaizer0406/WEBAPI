@@ -29,7 +29,7 @@ namespace Coaching.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(DefaultResponse<CollectionResponse<StoriesResponse>>), StatusCodes.Status200OK)]
-        public IActionResult GetAll([FromQuery] BaseGetRequest model)
+        public IActionResult GetAll([FromQuery] StoriesGetRequest model)
         {
             try
             {
