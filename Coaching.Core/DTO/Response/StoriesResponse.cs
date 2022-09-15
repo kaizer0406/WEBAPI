@@ -24,6 +24,8 @@ namespace Coaching.Core.DTO.Response
         public string City { get; set; }
         [JsonPropertyName("appointment")]
         public string Appointment { get; set; }
+        [JsonPropertyName("image")]
+        public string Image { get; set; }
 
         public class Builder
         {
@@ -49,7 +51,7 @@ namespace Coaching.Core.DTO.Response
             public StoriesResponse Build() => dto;
             public List<StoriesResponse> BuildAll() => collection;
 
-            public static Builder From(SuccessStoires entity, string tipoConstructor = ConstantHelpers.CONSTRUCTOR_DTO_SINGLE)
+            public static Builder From(SuccessStories entity, string tipoConstructor = ConstantHelpers.CONSTRUCTOR_DTO_SINGLE)
             {
                 var dto = new StoriesResponse();
                 dto.Id = entity.Id;
@@ -58,10 +60,11 @@ namespace Coaching.Core.DTO.Response
                 dto.Age = entity.Age;
                 dto.City = entity.City;
                 dto.Appointment = entity.Appointment;
+                dto.Image = entity.Image;
                 return new Builder(dto);
             }
 
-            public static Builder From(IEnumerable<SuccessStoires> entities)
+            public static Builder From(IEnumerable<SuccessStories> entities)
             {
                 var collection = new List<StoriesResponse>();
 

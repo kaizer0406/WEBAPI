@@ -30,7 +30,7 @@ namespace Coaching.Data.Core.Coaching
         public virtual DbSet<SpecialityLevelCertificate> SpecialityLevelCertificate { get; set; } = null!;
         public virtual DbSet<SpecialityLevelTest> SpecialityLevelTest { get; set; } = null!;
         public virtual DbSet<SpecialityLevelTestOption> SpecialityLevelTestOption { get; set; } = null!;
-        public virtual DbSet<SuccessStoires> SuccessStoires { get; set; } = null!;
+        public virtual DbSet<SuccessStories> SuccessStories { get; set; } = null!;
         public virtual DbSet<Topic> Topic { get; set; } = null!;
         public virtual DbSet<User> User { get; set; } = null!;
         public virtual DbSet<UserCourse> UserCourse { get; set; } = null!;
@@ -350,7 +350,7 @@ namespace Coaching.Data.Core.Coaching
                     .HasColumnName("title");
 
                 entity.Property(e => e.Uri)
-                    .HasMaxLength(100)
+                    .HasMaxLength(180)
                     .IsUnicode(false)
                     .HasColumnName("uri");
 
@@ -408,9 +408,9 @@ namespace Coaching.Data.Core.Coaching
                     .HasConstraintName("FK_Speciality_Level_Test_Option_Speciality_Level_Test");
             });
 
-            modelBuilder.Entity<SuccessStoires>(entity =>
+            modelBuilder.Entity<SuccessStories>(entity =>
             {
-                entity.ToTable("Success_Stoires");
+                entity.ToTable("Success_Stories");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -425,6 +425,11 @@ namespace Coaching.Data.Core.Coaching
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("city");
+
+                entity.Property(e => e.Image)
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("image");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

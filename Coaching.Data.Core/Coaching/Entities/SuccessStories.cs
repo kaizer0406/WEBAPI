@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Coaching.Data.Core.Coaching.Entities
 {
-    public partial class SuccessStoires
+    public partial class SuccessStories
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
@@ -11,5 +11,6 @@ namespace Coaching.Data.Core.Coaching.Entities
         public int Age { get; set; }
         public string City { get; set; } = null!;
         public string Appointment { get; set; } = null!;
+        public string? Image { get; set; }
     }
 }

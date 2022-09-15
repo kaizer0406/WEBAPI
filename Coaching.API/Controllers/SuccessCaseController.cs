@@ -24,7 +24,7 @@ namespace Coaching.API.Controllers
             this.context = context;
         }
 
-        private IQueryable<SuccessStoires> PrepareQuery() => context.SuccessStoires
+        private IQueryable<SuccessStories> PrepareQuery() => context.SuccessStories
            .AsQueryable();
 
         [HttpGet]
