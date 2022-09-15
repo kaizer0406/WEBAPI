@@ -291,6 +291,11 @@ namespace Coaching.Data.Core.Coaching
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("name");
+
+                entity.Property(e => e.Video)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("video");
             });
 
             modelBuilder.Entity<SpecialityLevel>(entity =>

@@ -19,6 +19,8 @@ namespace Coaching.Core.DTO.Response
         public string Description{ get; set; }
         [JsonPropertyName("image")]
         public string Image { get; set; }
+        [JsonPropertyName("video")]
+        public string? Video { get; set; }
 
         [JsonPropertyName("levels")]
         public LevelResponse[] Levels { get; set; }
@@ -54,6 +56,7 @@ namespace Coaching.Core.DTO.Response
                 dto.Name = entity.Name;
                 dto.Description = entity.Description;
                 dto.Image = entity.Image;
+                dto.Video = entity.Video;
                 dto.Levels = LevelResponse.Builder.From(entity.SpecialityLevel).BuildAll().ToArray();
                 return new Builder(dto);
             }
