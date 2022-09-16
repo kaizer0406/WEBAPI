@@ -28,6 +28,7 @@ namespace Coaching.API.Controllers
             .Include(x => x.UserCourse)
             .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.SpecialityLevelTest)
+                    .ThenInclude(x => x.SpecialityLevelTestOption)
             .Include(x => x.SpecialityLevel)
                 .ThenInclude(x => x.Speciality)
             .Include(x => x.SpecialityLevel)

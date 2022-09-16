@@ -18,7 +18,7 @@ namespace Coaching.Core.DTO.Response
         [JsonPropertyName("cup_image")]
         public string CupImage { get; set; }
         [JsonPropertyName("test")]
-        public TestReponse Test { get; set; }
+        public TestReponse[] Test { get; set; }
         [JsonPropertyName("courses")]
         public CourseResponse[] Courses { get; set; }
         [JsonPropertyName("certificates")]
@@ -70,8 +70,8 @@ namespace Coaching.Core.DTO.Response
                 dto.Name = entity.Name;
                 dto.CupImage = entity.CupImage;
                 dto.Order = entity.Order;
-                if (entity.SpecialityLevelTest != null)
-                    dto.Test = TestReponse.Builder.From(entity.SpecialityLevelTest.OrderBy(x => x.Order)).Build();
+                if (entity.SpecialityLevelTest.Count() > 0)
+                    dto.Test = TestReponse.Builder.From(entity.SpecialityLevelTest.OrderBy(x => x.Order)).BuildAll().ToArray();
                 dto.Speciality = entity.Speciality.Name;
                 dto.Image = entity.Speciality.Image;
                 dto.IsBasic = entity.IsBasic;
