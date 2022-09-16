@@ -33,9 +33,11 @@ namespace Coaching.Core.DTO.Response
         [JsonPropertyName("is_finished")]
         public bool IsFinished { get; set; }
         [JsonPropertyName("speciality")]
-        public string Speciality { get; set; }
+        public string? Speciality { get; set; }
+        [JsonPropertyName("speciality_video")]
+        public string? SpecialityVideo { get; set; }
         [JsonPropertyName("image")]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         [JsonPropertyName("is_basic")]
         public bool IsBasic { get; set; }
 
@@ -70,6 +72,7 @@ namespace Coaching.Core.DTO.Response
                 dto.Name = entity.Name;
                 dto.CupImage = entity.CupImage;
                 dto.Order = entity.Order;
+                dto.SpecialityVideo = entity.Speciality.Video;
                 if (entity.SpecialityLevelTest.Count() > 0)
                     dto.Test = TestReponse.Builder.From(entity.SpecialityLevelTest.OrderBy(x => x.Order)).BuildAll().ToArray();
                 dto.Speciality = entity.Speciality.Name;
