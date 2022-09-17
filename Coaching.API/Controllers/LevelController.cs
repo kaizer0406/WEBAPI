@@ -207,18 +207,31 @@ namespace Coaching.API.Controllers
                 if (user is null)
                     return UnauthorizedResult("unathorized");
 
-                var query = PrepareUserQuery().SingleOrDefault(x => x.UserId == userId && x.SpecialityLevelId == id);
-                if (query is null)
+                var userLevel = PrepareUserQuery().SingleOrDefault(x => x.UserId == userId && x.SpecialityLevelId == id);
+                if (userLevel is null)
                     return NotFoundResult("Especialidad no encontrado.");
 
                 var specialityTest = new UserSpecialityLevelTest
                 {
                     IsApproved = model.IsApproved,
                     Points = model.Points,
-                    UserSpecialityLevelId = query.Id
+                    UserSpecialityLevelId = userLevel.Id
                 };
                 context.UserSpecialityLevelTest.Add(specialityTest);
                 context.SaveChanges();
+
+                if (model.IsApproved) {
+                    userLevel.IsFinish = true;
+                    if (userLevel.SpecialityLevel.Level == ConstantHelpers.Level.INTERMEDIO && user.Level == ConstantHelpers.Level.BASICO)
+                    {
+                        user.Level = ConstantHelpers.Level.INTERMEDIO;
+                    }
+                    if (userLevel.SpecialityLevel.Level == ConstantHelpers.Level.AVANZADO && user.Level == ConstantHelpers.Level.INTERMEDIO)
+                    {
+                        user.Level = ConstantHelpers.Level.AVANZADO;
+                    }
+                    context.SaveChanges();
+                }
 
                 return OkResult("prueba guardada correctamente", new { });
             }

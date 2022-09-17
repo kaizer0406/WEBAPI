@@ -12,9 +12,6 @@ namespace Coaching.Core.DTO.Request
         [JsonPropertyName("is_approved")]
         public bool IsApproved { get; set; }
 
-        [JsonPropertyName("user_speciality_level_id")]
-        public int UserSpecialityLevelId { get; set; }
-
         [JsonPropertyName("points")]
         public decimal Points { get; set; }
     }
