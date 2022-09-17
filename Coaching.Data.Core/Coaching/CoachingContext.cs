@@ -373,14 +373,14 @@ namespace Coaching.Data.Core.Coaching
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Answer)
-                    .HasMaxLength(50)
+                    .HasMaxLength(150)
                     .IsUnicode(false)
                     .HasColumnName("answer");
 
                 entity.Property(e => e.Order).HasColumnName("order");
 
                 entity.Property(e => e.Question)
-                    .HasMaxLength(150)
+                    .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("question");
 
@@ -400,7 +400,7 @@ namespace Coaching.Data.Core.Coaching
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Option)
-                    .HasMaxLength(100)
+                    .HasMaxLength(150)
                     .IsUnicode(false)
                     .HasColumnName("option");
 
@@ -450,6 +450,11 @@ namespace Coaching.Data.Core.Coaching
             modelBuilder.Entity<Topic>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Color)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("color");
 
                 entity.Property(e => e.Title)
                     .HasMaxLength(50)

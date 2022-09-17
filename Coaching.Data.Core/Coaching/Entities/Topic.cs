@@ -12,6 +12,7 @@ namespace Coaching.Data.Core.Coaching.Entities
 
         public int Id { get; set; }
         public string Title { get; set; } = null!;
+        public string? Color { get; set; }
 
         public virtual ICollection<Course> Course { get; set; }
     }
