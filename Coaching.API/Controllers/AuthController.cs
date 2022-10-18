@@ -152,7 +152,7 @@ namespace Coaching.API.Controllers
                 var userExist = context.User
                     .SingleOrDefault(x => x.Token == model.Code);
                 if (userExist is null)
-                    return UnauthorizedResult("Codgo Vencido.");
+                    return UnauthorizedResult("Código Vencido.");
 
                 var encryptPass = SecurityHelper.EncryptText(model.Password);
                 userExist.Password = encryptPass;
